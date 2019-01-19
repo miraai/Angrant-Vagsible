@@ -1,0 +1,8 @@
+- name: Configure web proxy
+  hosts: all
+  user: vagrant
+  roles:
+    - ufw
+    - nginx
+  vars: 
+    - server_ip: 192.168.33.17
