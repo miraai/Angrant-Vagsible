@@ -1,0 +1,9 @@
+- name: Deploy Jenkins
+  hosts: droplet
+  user: root
+  roles:
+    - java
+    - jenkins
+    - nginx
+  vars: 
+    - server_ip: 68.183.6.96

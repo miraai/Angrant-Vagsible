@@ -1,2 +1,5 @@
 [hot]
 ufw-remote
+
+[droplet]
+jenkins

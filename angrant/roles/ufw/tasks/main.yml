@@ -1,15 +1,24 @@
 - name: Install ufw
-  apt: name=ufw state=present update_cache=yes
+  apt: 
+    name: ufw 
+    state: present 
+    update_cache: yes
   become: True
 
 - name: Enable ufw
-  ufw: state=enabled policy=deny
+  ufw: 
+    state: enabled 
+    policy: deny
   become: True
 
 - name: UFW enable SSH
-  ufw: rule=allow port=ssh
+  ufw: 
+    rule: allow 
+    port: ssh
   become: True
 
 - name: Allow 80 port
-  ufw: rule=allow port=80
+  ufw: 
+    rule: allow 
+    port: 80
   become: True

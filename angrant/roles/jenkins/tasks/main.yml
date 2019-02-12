@@ -1,0 +1,36 @@
+#- name: Jenkins Debian Repository
+#  get-url:
+#    url: https://pkg.jenkins.io/debian/jenkins.io.key
+#    dest: {{ ansible_env.HOME }}
+
+- name: Check if Jenkins key is added
+  apt_key:
+    url: https://pkg.jenkins.io/debian/jenkins.io.key
+    state: present
+  become: True
+
+- name: Add Jenkins repo to list
+  apt_repository:
+    repo: deb http://pkg.jenkins.io/debian-stable binary/
+    state: present
+  become: True
+
+- name: Update and upgrade
+  apt: 
+    update_cache: yes
+    upgrade: yes
+    cache_valid_time: 86400 #one day
+  become: True
+
+- name: Ensure jenkins is installed
+  apt: 
+    name: jenkins 
+    state: present 
+    update_cache: yes
+  become: True
+
+- name: Ensure jenkins is running
+  service: 
+    name: jenkins 
+    state: started
+  become: True

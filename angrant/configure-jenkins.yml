@@ -1,0 +1,9 @@
+- name: Configure Jenkins
+  hosts: all
+  user: vagrant
+  roles:
+    - java
+    - jenkins
+    - nginx
+  vars: 
+    - server_ip: 192.168.33.17
